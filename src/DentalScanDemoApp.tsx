@@ -577,7 +577,12 @@ export default function DentalScanDemoApp() {
                 <div className="mt-6 flex flex-wrap gap-3">
                     <button
                         onClick={startAnalysis}
-                        className="rounded-2xl bg-slate-900 px-5 py-3 font-medium hover:opacity-90 transition"
+                        disabled={!uploadedFile}
+                        className={`rounded-2xl px-5 py-3 font-medium transition ${
+                            uploadedFile
+                                ? "bg-slate-900 text-white hover:opacity-90"
+                                : "bg-slate-200 text-slate-400 cursor-not-allowed"
+                        }`}
                     >
                         Запустить анализ
                     </button>
@@ -593,7 +598,7 @@ export default function DentalScanDemoApp() {
             <div className="rounded-[28px] bg-white border border-slate-200 shadow-sm p-5">
                 <h3 className="text-lg font-semibold">Что показывает этот экран</h3>
                 <ul className="mt-4 space-y-3 text-sm text-slate-600">
-                    <li>• понятный вход в user flow</li>
+                <li>• понятный вход в user flow</li>
                     <li>• простую загрузку mock-case</li>
                     <li>• готовность к AI processing</li>
                     <li>• UX без перегруза врача деталями</li>
@@ -711,7 +716,7 @@ export default function DentalScanDemoApp() {
                                 <div key={item.title} className="rounded-2xl border border-slate-200 p-4 hover:bg-slate-50 transition">
                                     <div className="flex items-start justify-between gap-3">
                                         <div>
-                                            <div className="font-medium">{item.title}</div>
+                                            <div className="font-medium break-all">{item.title}</div>
                                             <div className="text-sm text-slate-500 mt-1">{item.tooth}</div>
                                         </div>
                                         <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs text-slate-700 border border-slate-200">
@@ -841,7 +846,8 @@ export default function DentalScanDemoApp() {
                     </main>
                 </section>
             </div>
-            <section className="rounded-[32px] border border-slate-200 bg-slate-900 text-white shadow-xl p-8 md:p-10 mt-6">
+            <section
+                className="rounded-[32px] border border-slate-200 bg-slate-900 text-white shadow-xl p-8 md:p-10 mt-6">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                     <div>
                         <div
@@ -870,6 +876,9 @@ export default function DentalScanDemoApp() {
                     </div>
                 </div>
             </section>
+            <footer className="text-center text-sm text-slate-500 py-6">
+                DentalScan concept demo · Product case by Arina Kunashko
+            </footer>
         </div>
     );
 }
